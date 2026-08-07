@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+body {
+  background-color: rgba(88, 128, 106, 0.671);
+  color: rgba(0, 0, 0, 0.911);
+}
+
+a {
+  color: rgba(0, 0, 0, 0.411);
+}
+
+a:hover {
+  color: aliceblue;
+}
+
+a:active {
+  color: rgb(91, 124, 185);
+}
