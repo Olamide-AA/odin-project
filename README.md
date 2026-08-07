@@ -2,6 +2,8 @@
 
 Projects from [The Odin Project](https://www.theodinproject.com/) Foundations curriculum, built while learning web development from the ground up.
 
+**Live site:** https://olamide-aa.github.io/odin-project/
+
 ## Projects
 
 | Project                                                    | Description                                                          | Live Demo                                          | Built With |
