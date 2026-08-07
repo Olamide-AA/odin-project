@@ -134,13 +134,13 @@ h1 {
   padding: 40px;
 }
 
-.body-middle-content p {
+.body-middle-content .quote {
   font-size: 36px;
   font-weight: 300;
   font-style: italic;
 }
 
-.body-middle-content h2 {
+.body-middle-content p {
   align-self: flex-end;
   font-size: 30px;
 }
