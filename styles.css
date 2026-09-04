@@ -9,6 +9,7 @@
 body {
   background-color: rgba(88, 128, 106, 0.671);
   color: rgba(0, 0, 0, 0.911);
+  padding: 10px;
 }
 
 a {
@@ -21,4 +22,11 @@ a:hover {
 
 a:active {
   color: rgb(91, 124, 185);
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
 }
