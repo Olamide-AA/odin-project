@@ -1,5 +1,27 @@
+let rock = document.querySelector("#rock");
+let paper = document.querySelector("#paper");
+let scissors = document.querySelector("#scissors");
+
+let roundResultText = document.querySelector("#result");
+let score = document.querySelector(".score");
+let humanScoreContainer = document.querySelector("#humanScore");
+let computerScoreContainer = document.querySelector("#computerScore");
+
 let computerScore = 0;
 let humannScore = 0;
+
+rock.addEventListener("click", () => {
+  playRound(getComputerChoice(), getHumanChoice("rock"));
+  declareWinner();
+});
+paper.addEventListener("click", () => {
+  playRound(getComputerChoice(), getHumanChoice("paper"));
+  declareWinner();
+});
+scissors.addEventListener("click", () => {
+  playRound(getComputerChoice(), getHumanChoice("scissors"));
+  declareWinner();
+});
 
 function getComputerChoice() {
   //Get a random number between 1 and 3
@@ -25,9 +47,7 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  let humanChoice = prompt("Enter either 'rock', 'paper' or 'scissors'");
-  humanChoice = humanChoice.toLowerCase();
+function getHumanChoice(humanChoice) {
   console.log(humanChoice);
   switch (humanChoice) {
     case "rock": {
@@ -51,34 +71,44 @@ function getHumanChoice() {
 function playRound(computerChoice, humanChoice) {
   if (computerChoice == "rock" && humanChoice == "paper") {
     humannScore += 1;
-    console.log("You win! Paper beats Rock");
+    roundResultText.textContent = "You win! Paper beats Rock";
   } else if (computerChoice == "paper" && humanChoice == "rock") {
     computerScore += 1;
-    console.log("Computer wins! Paper beats Rock");
+    roundResultText.textContent = "Computer wins! Paper beats Rock";
   } else if (computerChoice == "scissors" && humanChoice == "rock") {
     humannScore += 1;
-    console.log("You win! Rock beats Scissors");
+    roundResultText.textContent = "You win! Rock beats Scissors";
   } else if (computerChoice == "rock" && humanChoice == "scissors") {
     computerScore += 1;
-    console.log("Computer wins! Rock beats Scissors");
+    roundResultText.textContent = "Computer wins! Rock beats Scissors";
   } else if (computerChoice == "paper" && humanChoice == "scissors") {
     humannScore += 1;
-    console.log("You Win! Scissors beats Paper");
+    roundResultText.textContent = "You Win! Scissors beats Paper";
   } else if (computerChoice == "scissors" && humanChoice == "paper") {
     computerScore += 1;
-    console.log("Computer wins! Scissors beats Paper");
+    roundResultText.textContent = "Computer wins! Scissors beats Paper";
   } else {
-    console.log("No winner!");
+    roundResultText.textContent = "No winner!";
   }
+  displayScore();
 }
 
-function playGame() {
-  for (let i = 1; i < 6; i++) {
-    playRound(getComputerChoice(), getHumanChoice());
-    console.log("Computer: score " + computerScore);
-
-    console.log("You: score " + humannScore);
-  }
+function resetScore() {
+  computerScore = 0;
+  humannScore = 0;
 }
 
-playGame();
+function displayScore() {
+  humanScoreContainer.textContent = "Player: " + humannScore;
+  computerScoreContainer.textContent = "Computer: " + computerScore;
+}
+
+function declareWinner() {
+  if (computerScore == 5) {
+    roundResultText.textContent = "Computer claims victory!";
+    resetScore();
+  } else if (humannScore == 5) {
+    roundResultText.textContent = "You are the victor!";
+    resetScore();
+  }
+}
