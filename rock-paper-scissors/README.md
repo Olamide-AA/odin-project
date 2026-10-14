@@ -1,12 +1,14 @@
 # Rock Paper Scissors
 
-A rock paper scissors game played in the console, as part of The Odin Project Foundations curriculum.
+A browser-based rock paper scissors game, built as part of The Odin Project Foundations curriculum.
 
 **Live demo:** https://olamide-aa.github.io/odin-project/rock-paper-scissors/
 
 ## Overview
 
-The player picks rock, paper, or scissors and plays against a randomly chosen computer selection. The game runs five rounds and reports a winner at the end.
+The player picks rock, paper, or scissors by clicking a button and plays against a randomly chosen computer selection. The page shows each round's result and the running score, and announces a winner once either side reaches five points.
+
+The game started as a console-only version using `prompt()` and `console.log()`, and was later reworked to use a button-based UI.
 
 ## What I Practiced
 
@@ -14,9 +16,9 @@ The player picks rock, paper, or scissors and plays against a randomly chosen co
 - Conditional logic and comparison
 - Generating and constraining random numbers
 - Handling and normalising user input
-- Reading values from the browser console
-
-## Notes
+- Selecting and updating DOM elements
+- Handling click events with event listeners
+- Working on a feature branch and merging it into main
 
 ## Notes
 
