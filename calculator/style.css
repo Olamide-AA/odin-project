@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+  flex-direction: column;
+  background-color: black;
+}
+
+.calculator {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+}
+
+#display {
+  flex: 1;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+#operation {
+  flex: 1;
+}
+
+#answer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+.buttons div {
+  flex: 1;
+  border: 3px solid pink;
+}
