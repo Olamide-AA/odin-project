@@ -6,11 +6,6 @@ const operandBDisplay = document.querySelector("#operandB");
 const equalButton = document.querySelector("#equal");
 const answerDisplay = document.querySelector("#answer");
 
-let operandA;
-let operator;
-let operandB;
-let answer;
-
 let isOnOperandA = true;
 let isOnOperator = false;
 let isOnOperandB = false;
@@ -30,9 +25,7 @@ buttonsContainer.addEventListener("click", (event) => {
 
 function operate() {
   operandA = Number(operandADisplay.textContent);
-  console.log(operandA);
   operandB = Number(operandBDisplay.textContent);
-  console.log(operandB);
   if (operator == "plus") {
     answer = add(operandA, operandB);
   } else if (operator == "minus") {
@@ -67,8 +60,6 @@ function setOperand(event) {
 function setOperator(event) {
   setOnOperator();
   if (isOnOperator == true) {
-    operandA = Number(operandADisplay.textContent);
-    console.log(operandA);
     operatorDisplay.textContent = event.target.textContent;
     switch (event.target.textContent) {
       case "+": {
@@ -130,5 +121,3 @@ function divide(a, b) {
 function clearText(display) {
   display.textContent = "";
 }
-console.log(numbers);
-console.log(numbers.map((number) => Number(number.textContent)));
