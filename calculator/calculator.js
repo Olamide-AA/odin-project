@@ -6,44 +6,33 @@ const operandBDisplay = document.querySelector("#operandB");
 const equalButton = document.querySelector("#equal");
 const answerDisplay = document.querySelector("#answer");
 
-let operandA = null;
-let operator = null;
-let operandB = null;
+let operandA;
+let operator;
+let operandB;
 let answer;
 
+let isOnOperandA = true;
+let isOnOperator = false;
+let isOnOperandB = false;
+
 buttonsContainer.addEventListener("click", (event) => {
-  //For numbers
+  //Numbers
   if (event.target.classList.contains("number")) {
     setOperand(event);
   }
-  //For operator
+  //Operator
   else if (event.target.classList.contains("operator")) {
     setOperator(event);
   } else if (event.target.classList.contains("equal")) {
-    operate(operandA, operator, operandB);
+    operate();
   }
 });
 
-function add(a, b) {
-  return a + b;
-}
-
-function substract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  if (b == 0) {
-    return "undefined";
-  }
-  return a / b;
-}
-
-function operate(operandA, operator, operandB) {
+function operate() {
+  operandA = Number(operandADisplay.textContent);
+  console.log(operandA);
+  operandB = Number(operandBDisplay.textContent);
+  console.log(operandB);
   if (operator == "plus") {
     answer = add(operandA, operandB);
   } else if (operator == "minus") {
@@ -52,34 +41,34 @@ function operate(operandA, operator, operandB) {
     answer = multiply(operandA, operandB);
   } else if (operator == "divide") {
     answer = divide(operandA, operandB);
+  } else {
+    answer = operandA;
   }
   answerDisplay.textContent = answer;
   console.log(answer);
   console.log(`OperandA = ${operandA}`);
   console.log(`OperandB = ${operandB}`);
   console.log(`Operator = ${operator}`);
-  operandA = null;
-  operandB = null;
-  operator = null;
-  console.log(`OperandA = ${operandA}`);
-  console.log(`OperandB = ${operandB}`);
-  console.log(`Operator = ${operator}`);
+  setOnOperandA();
+  clearText(operandADisplay);
+  clearText(operatorDisplay);
+  clearText(operandBDisplay);
 }
 
 function setOperand(event) {
-  if (operandA == null) {
-    operandADisplay.textContent = event.target.textContent;
-    operandA = Number(event.target.textContent);
-    console.log(operandA);
-  } else if (operandB == null) {
-    operandBDisplay.textContent = event.target.textContent;
-    operandB = Number(event.target.textContent);
-    console.log(operandB);
+  if (isOnOperandA == true) {
+    operandADisplay.textContent += event.target.textContent;
+    console.log(operandADisplay.textContent);
+  } else if (isOnOperandB == true) {
+    operandBDisplay.textContent += event.target.textContent;
   }
 }
 
 function setOperator(event) {
-  if (operator == null) {
+  setOnOperator();
+  if (isOnOperator == true) {
+    operandA = Number(operandADisplay.textContent);
+    console.log(operandA);
     operatorDisplay.textContent = event.target.textContent;
     switch (event.target.textContent) {
       case "+": {
@@ -100,8 +89,46 @@ function setOperator(event) {
       }
     }
   }
+  setOnOperandB();
   console.log(operator);
 }
 
+function setOnOperandA() {
+  isOnOperandB = false;
+  isOnOperandA = true;
+}
+
+function setOnOperator() {
+  isOnOperandA = false;
+  isOnOperator = true;
+}
+
+function setOnOperandB() {
+  isOnOperator = false;
+  isOnOperandB = true;
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+function substract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  if (b == 0) {
+    return "undefined";
+  }
+  return a / b;
+}
+
+function clearText(display) {
+  display.textContent = "";
+}
 console.log(numbers);
 console.log(numbers.map((number) => Number(number.textContent)));
