@@ -1,0 +1,110 @@
+:root {
+  --bg: #111318;
+  --surface: #1b1f27;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --btn: #2b313c;
+  --btn-hover: #384050;
+  --accent: #f59e0b;
+  --focus: #93c5fd;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* A 3-column grid puts the buttons in a row; result and score span the full width below */
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 140px));
+  justify-content: center;
+  align-content: center;
+  gap: 16px;
+  padding: 48px 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+button {
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  background: var(--btn);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.08s ease;
+}
+
+@media (hover: hover) {
+  button:hover {
+    background: var(--btn-hover);
+    border-color: var(--accent);
+  }
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+#result,
+.score {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+#result {
+  min-height: 1.5em;
+  margin-top: 16px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.score div {
+  min-width: 140px;
+  padding: 12px 20px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+/* Hide score boxes until the game puts something in them */
+.score div:empty {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+  button:active {
+    transform: none;
+  }
+}
